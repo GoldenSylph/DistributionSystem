@@ -1,0 +1,25 @@
+<table border="1">
+  <caption>Таблица запросов</caption>
+  
+  <tr>
+    <th>Отправитель</th>
+    <th>Тип распределения</th>
+    <th>Статус</th>
+  </tr>
+  <tr>
+  {% for list in requests %}
+        {% for req in list %}
+        <td> {{ req.student.first_name }} {{ req.student.last_name }}<br>{{ req.student.email }}</td>
+        <td> {{ req.container }} </td>
+        <td> {% if req.status == 0 %}
+                    Рассматривается
+                {% elif req.status == 1 %}
+                    Принята
+                {% elif req.status == 2 %}
+                    Отклонена
+                {% endif %} 
+        </td>
+    <tr/>
+        {% endfor %}
+  {% endfor %}
+</table>

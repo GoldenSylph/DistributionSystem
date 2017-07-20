@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Регистрация</title>
+
+    <!-- Bootstrap -->
+    <link href="{% static "userroles/css/bootstrap.min.css" %}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static "userroles/css/style.css" %}">
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{% static "userroles/js/bootstrap.min.js" %}"></script>
+  </head>
+  
+  <body>
+    <div class="form-main-padding">
+      <header align="center">
+        <img class="form-signin-heading" src="{% static "userroles/img/login_logo.jpeg" %}" width="27%">
+      </header>
+      <div class="container">
+        
+        <form class="form-signin" action = "" method = "post">
+        {% csrf_token %}
+          <label for="inputLastname" class="sr-only">Фамилия</label>
+          <input type="text" id="inputLastname" class="form-control" name="last_name" placeholder="Фамилия" required autofocus>
+
+          <label for="inputFirstname" class="sr-only">Имя</label>
+          <input type="text" id="inputFirstname" class="form-control" name="first_name" placeholder="Имя" required autofocus>
+
+          <label for="inputUsername" class="sr-only">Имя пользователя</label>
+          <input type="text" id="inputUsername" class="form-control" name="username" placeholder="Имя пользователя" required autofocus>
+
+          <label for="inputEmail" class="sr-only">Email address</label>
+          <input type="email" id="inputEmail" class="form-control" name="email" placeholder="Email" required autofocus>
+      
+          <div class="checkbox">
+            <p><big>Должность:</big></p>
+            <p>
+              <label>
+                <input type="checkbox" name="position" value="Student">
+                Студент
+              </label>
+            </p>
+            <p>
+              <label>
+                <input type="checkbox" name="position" value="Professor">
+                Преподаватель
+              </label>
+            </p>
+            <p>
+              <label>
+                <input type="checkbox" name="position" value="Cooperator">
+                Сотрудник
+              </label>
+            </p>
+            <p>
+              <label>
+                <input type="checkbox" name="position" value="ScientificDirector">
+                Научный рукводитель
+              </label>
+            </p>
+          </div>
+
+          <label for="inputPassword" class="sr-only">Password</label>
+          <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Пароль" required autofocus>
+
+
+          <label for="inputPassword" class="sr-only">Password</label>
+          <!--<input type="password" id="inputPassword" class="form-control" placeholder="Повторите пароль" required  autofocus>-->
+
+          <button class="btn btn-lg btn-primary btn-block button-margin" type="submit">Зарегистрироваться</button>
+
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

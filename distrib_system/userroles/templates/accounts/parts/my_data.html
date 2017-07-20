@@ -1,0 +1,115 @@
+{% extends 'accounts/my_profile.html' %}
+
+{% block content %}
+<div class="col col-lg-5">
+  <h2>Ваши данные:</h2>
+  <form class="form-changing" method="post" action="{% url 'userroles:edit_profile' user_id %}">
+    {% csrf_token %}
+    <ul class="list-group">
+      <li class="list-group-item">{{user_name}} </li>
+      <li class="list-group-item">
+        <input class="form-control" type="text" placeholder="Изменить имя" id="inputName" name="user_new_name">
+      </li>
+      <li class="list-group-item">{{user_surname}}</li>
+      <li class="list-group-item">
+        <input class="form-control" type="text" placeholder="Изменить фамилию" id="inputSurname" name="user_new_surname">
+      </li>
+      <li class="list-group-item">{{user_username}} </li>
+      <li class="list-group-item">
+        <input class="form-control" type="text" placeholder="Изменить username" id="inputUsername" name="user_new_username">
+      </li>
+      <li class="list-group-item">{{user_email}} </li>
+      <li class="list-group-item">
+        <input class="form-control" type="text" placeholder="Изменить email" id="inputEmail" name="user_new_email">
+      </li>
+      {% if is_student %}
+        <li class="list-group-item">
+          {% if is_student.group %}
+            {{ is_student.group }}
+          {% else %}
+            <p>Укажите группу</p>
+          {% endif %}
+        </li>
+        <li class="list-group-item">
+          <input class="form-control" type="text" placeholder="Изменить группу" id="inputEmail" name="user_stud_new_group">
+        </li>
+        <li class="list-group-item">
+          {% if is_student.course %}
+            {{ is_student.course }}
+          {% else %}
+            <p>Укажите курс</p>
+          {% endif %}
+        </li>
+        <li class="list-group-item">
+          <input class="form-control" type="text" placeholder="Изменить курс" id="inputEmail" name="user_stud_new_course">
+        </li>
+      {% endif %}
+      {% if is_professor %}
+        <li class="list-group-item">
+          {% if is_professor.education_course %}
+            Преподавателю: {{ is_professor.education_course }}
+          {% else %}
+            <p>Преподавателю: Укажите Вашу специализацию</p>
+          {% endif %}
+        </li>
+        <li class="list-group-item">
+          <input class="form-control" type="text" placeholder="Изменить специализацию" id="inputEmail" name="user_prof_new_education_course">
+        </li>
+      {% endif %}
+      {% if is_sci_director %}
+        <li class="list-group-item">
+          {% if is_sci_director.education_course %}
+            Научному руководителю: {{ is_sci_director.education_course }}
+          {% else %}
+            <p>Научному руководителю: Укажите Вашу область</p>
+          {% endif %}
+        </li>
+        <li class="list-group-item">
+          <input class="form-control" type="text" placeholder="Изменить область" id="inputEmail" name="user_sci_dir_new_education_course">
+        </li>
+      {% endif %}
+      {% if is_cooperator %}
+        <li class="list-group-item">
+          {% if is_cooperator.work %}
+            {{ is_cooperator.work }}
+          {% else %}
+            <p>Укажите Вашу должность</p>
+          {% endif %}
+        </li>
+        <li class="list-group-item">
+          <input class="form-control" type="text" placeholder="Изменить должность" id="inputEmail" name="user_coop_new_work">
+        </li>
+      {% endif %}
+      <li class="list-group-item">
+        <button class="btn btn-primary btn-default btn-block" type="submit">Подтвердить изменение профиля</button>
+      </li>
+    </ul>  
+  </form>
+  <hr>
+  <h2>Сменить пароль:</h2>
+  <form class="form-changing" method="post" action="{% url 'userroles:edit_password' user_id %}">
+    {% csrf_token %}
+    <ul class="list-group">
+      <li class="list-group-item">Изменить пароль:</li>
+      <li class="list-group-item">
+        <input class="form-control" type="text" placeholder="Новый пароль" id="inputNewPass" name="user_new_pass">
+      </li>
+      <li class="list-group-item">
+        <input class="form-control" type="text" placeholder="Повторите Новый пароль" id="inputNewPassConfirm" name="user_new_pass_confirm">
+      </li>
+      <li class="list-group-item">
+        <button class="btn btn-primary btn-default btn-block" type="submit">Подвердить смену пароля</button>
+      </li>
+      <li class="list-group-item">
+        {% if messages %}
+          <ul class="messages">
+            {% for message in messages %}
+              <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+             {% endfor %}
+           </ul>
+        {% endif %}
+      </li>
+    </ul>
+  </form>
+</div>
+{% endblock %}

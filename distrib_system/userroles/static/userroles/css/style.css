@@ -1,0 +1,183 @@
+.button input {
+  height: 40px;
+  width: 400px;
+  line-height: 10px;
+  background: #012a77;
+  color: white;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  text-transform: uppercase;
+}
+
+.form-row input {
+  float: center;
+  height: 18px;
+  line-height: 10px;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.reg-form {
+  width: 400px;
+  height: 356px;
+  background-color: #e3e3e3;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+}
+
+/* Bootstrap addition */
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+
+.form-signin .checkbox {
+  font-weight: normal;
+}
+
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+
+.form-signin input[type="username"] {
+  margin-bottom: -1px;
+  border-radius: 3px;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-radius: 3px;
+}
+
+/* Bootstrap addition for register.html */
+.form-main-padding {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  font-family: 'Bree Serif', serif;
+}
+
+.image-padding {
+  padding-top: 10px;
+}
+
+/* Bootstrap addition for my_profile.html */
+/* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+.row.content {height: 1500px}
+
+/* Set gray background color and 100% height */
+.sidenav {
+  background-color: #f1f1f1;
+  height: 100%;
+}
+
+/* Set black background color, white text and some padding */
+footer {
+  background-color: #555;
+  color: white;
+  padding: 15px;
+}
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+  .sidenav {
+    height: auto;
+    padding: 15px;
+  }
+  .row.content {height: auto;} 
+}
+
+/* Bootstrap addition for universal table */
+.table>thead>tr{
+  background-color: #0074D9;
+  color:#ffffff;
+}
+
+.btn-success-outline{
+  color: #fff;
+  background-color: #0074D9;
+  border-color: #5cb85c;
+  border-radius: 10px;
+  outline: none;
+  text-decoration: none;
+}
+
+.btn-success-outline:hover{
+  color:#fff;
+}
+
+.waitbutton{
+  background-color: #808080;
+  color:#fff;
+  border-color: #4a4848;
+  outline: none;
+}
+
+.cancelbutton{
+  display: inline-block;
+  background-color: rgba(217, 83, 79, 0.8);
+  border-color: #ba3838;
+  color:#fff;
+  outline: none;
+}
+
+.cancelbutton:hover{
+  background-color: rgba(217, 83, 79, 1);
+  border-color: #ba3838;
+  color:#fff;
+  outline: none;
+  text-decoration: none;
+}
+
+.successbutton{
+  display: inline-block;
+  background-color: rgba(46, 204, 113, 0.8);
+  border-color: #25a25a;
+  color: #fff;
+  outline: none;
+}
+
+.successbutton:hover{
+  background-color: rgba(46, 204, 113, 1);
+  border-color: #25a25a;
+  color:#fff;
+  outline: none;
+  text-decoration: none;
+}
+
+.btn-success-outline:focus,.cancelbutton:focus,.successbutton:focus{
+  color:#fff;
+  text-decoration: none;
+  outline: none;
+
+}
+
+.navbar {
+  margin-bottom: 0px;
+}
+
+.h2-margin {
+  margin: 10px;
+}

@@ -1,0 +1,46 @@
+{% extends 'accounts/my_profile.html' %}
+{% block content %}
+<div class="panel panel-default">
+  <div class="panel-heading">Все запросы</div>
+  {% if requests %}
+    <table class="table table-hover">
+      <thead>
+          <tr>
+            <th class="col-sm-1 bg-primary th-align-and-text-size">ID</th>
+            <th class="col-lg-4 bg-primary th-align-and-text-size">ФИО Студента</th>
+            <th class="col-lg-4 bg-primary th-align-and-text-size">Лаборатория</th>
+            <th class="col-lg-4 bg-primary th-align-and-text-size">Статус</th>
+          </tr>
+      </thead>
+      <tbody class="table-striped">
+          {% for list in requests %}
+            {% for req in list %}
+              <tr>
+                <th scope="row">{{ req.id }}</th>
+                <td><span id="space">{{ req.student.first_name }} {{ req.student.last_name }}<br>{{ req.student.email }}</span></td>
+                <td>{{ req.container }}</td>
+                <td>
+                  <div id="space">
+                    {% if req.status is 0 %}
+                      <p>Рассматривается</p>
+                    {% elif req.status is 1 %}
+                      <p>Принято</p>
+                    {% elif req.status is 2 %}
+                      <p>Отказано</p>
+                    {% else %}
+                      <p>Неверный код запроса: {{ req.status }}</p>
+                    {% endif %}
+                  </div>
+                </td>
+              </tr>
+            {% endfor %}
+          {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <div class="h2-margin">
+      <h2>На текущий момент нет запросов.</h2>
+    </div>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,8 @@
+{% extends 'accounts/my_profile.html' %}
+{% block content %}
+  <div class="jumbotron">
+    <h1>Вы уже подали заявку!</h1>
+    <p>Ожидайте рассмотрения.</p>
+    <p><a class="btn btn-primary btn-lg" href="{% url 'userroles:profile' user_id %}" role="button">Ладно</a></p>
+  </div>
+{% endblock%}

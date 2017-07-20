@@ -1,0 +1,54 @@
+{% extends 'accounts/my_profile.html' %}
+{% block content %}
+<div class="panel panel-default">
+  <div class="panel-heading">Все запросы</div>
+  {% if triples %}
+    <table class="table table-hover">
+      <thead>
+          <tr>
+            <th class="col-sm-1 bg-primary th-align-and-text-size">Название</th>
+            <th class="col-lg-4 bg-primary th-align-and-text-size">Руководитель</th>
+            <th class="col-lg-4 bg-primary th-align-and-text-size">Занято/Всего</th>
+            <th class="col-lg-4 bg-primary"></th>
+          </tr>
+      </thead>
+      <tbody class="table-striped">
+          {% for content in triples %}
+            <tr>
+                <td><span id="space">{{ content.first_item.container_name }}</td>
+                <td>
+                  {% for director in content.first_item.container_director.all %}
+                    {{ director.first_name }} {{ director.last_name }}<br>{{ director.email }}
+                  {% endfor %}
+                </td>
+                <td>
+                  {{ content.second_item }} / {{ content.first_item.container_capacity }}
+                </td>
+                <td>
+                  <div id="butn{{ сontent.first_item.id }}">
+                    <form action={% url 'choose_distrib:student_make_request' user_id content.first_item.container_type content.first_item.container_type content.first_item.id %}  method="post">
+                      {% csrf_token %}  
+                      <button type="submit" id="success{{ req.id }}" class="btn btn-success">Подать заявку</button>
+                    </form>
+                  </div>
+                </td>
+              </tr>
+              <script type="text/javascript">
+                {% if content.third_item == 1 %}
+                  document.getElementById('butn{{ сontent.first_item.id }}').innerHTML = '<p>Принято</p>';
+                {% elif content.third_item == 2 %}
+                  document.getElementById('butn{{ сontent.first_item.id }}').innerHTML = '<p>Отклонено</p>';
+                {% elif content.third_item == 0 %}
+                document.getElementById('butn{{ сontent.first_item.id }}').innerHTML = '<p>Рассматривается</p>';
+                {% endif %}  
+              </script>
+          {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <div class="h2-margin">
+        <h2>На текущий момент записей в базе данных нет.</h2>
+    </div>
+  {% endif %}
+</div>
+{% endblock %}

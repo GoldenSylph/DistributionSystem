@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Логин</title>
+
+    <!-- Bootstrap -->
+    <link href="{% static "userroles/css/bootstrap.min.css" %}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static "userroles/css/style.css" %}">
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{% static "userroles/js/bootstrap.min.js" %}"></script>
+  </head>
+  <body>
+    <div class="container form-main-padding vcenter">
+      <form class="form-signin" method="post" action="/accounts/login/">
+        {% csrf_token %}
+
+
+        {% if messages %}
+          <ul class="messages">
+            {% for message in messages %}
+              <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+             {% endfor %}
+           </ul>
+        {% endif %}
+
+
+        <img class="form-signin-heading" src="{% static "userroles/img/login_logo.jpeg" %}" width="95%">
+        <label for="inputLogin" class="sr-only">Логин</label>
+        <input type="login" id="inputLogin" class="form-control" placeholder="Логин" required autofocus name="login">
+        <label for="inputPassword" class="sr-only">Пароль</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Пароль" required name="password">
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Вход</button>
+        <a href="/accounts/register/" class="btn btn-block">Регистрация</a>
+      </form>
+    </div>
+  </body>
+</html>
